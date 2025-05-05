@@ -1,4 +1,4 @@
-// Simplified version for Vercel deployment troubleshooting - May 4, 2025
+// adding stuff back in to hopefully work on vercel
 
 import React, { useState, useEffect } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
@@ -128,10 +128,49 @@ function App() {
         </div>
       </main>
       <footer className="App-footer">
-        <p>Data compiled manually by Luke Harold</p>
+        <p>Data compiled manually by Luke Harold. Coding by Claude.ai.</p>
+        <p>Last updated May 5, 2025</p>
       </footer>
     </div>
   );
 }
+
+// Add this function to your App.js:
+const CustomYAxisTick = (props) => {
+  const { x, y, payload } = props;
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text x={0} y={0} dy={4} textAnchor="end" fill="#666">
+        ${payload.value.toLocaleString()}
+      </text>
+    </g>
+  );
+};
+
+// Then update your YAxis component:
+<YAxis 
+  type="number" 
+  dataKey="price" 
+  name="Price"
+  tick={<CustomYAxisTick />}
+/>
+
+// Import Tooltip from recharts
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
+
+// Add the custom tooltip component
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="hover-tooltip">
+        Click for details
+      </div>
+    );
+  }
+  return null;
+};
+
+// Add the Tooltip component to your ScatterChart
+<Tooltip content={<CustomTooltip />} />
 
 export default App;
