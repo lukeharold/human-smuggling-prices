@@ -1,7 +1,5 @@
-// adding stuff back in to hopefully work on vercel
-
 import React, { useState, useEffect } from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, ZAxis } from 'recharts';
 import Papa from 'papaparse';
 import './App.css';
 
@@ -9,6 +7,30 @@ function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Custom Y-axis tick component
+  const CustomYAxisTick = (props) => {
+    const { x, y, payload } = props;
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text x={0} y={0} dy={4} textAnchor="end" fill="#666">
+          ${payload.value.toLocaleString()}
+        </text>
+      </g>
+    );
+  };
+
+  // Custom tooltip component
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="hover-tooltip">
+          Click for details
+        </div>
+      );
+    }
+    return null;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,7 +78,9 @@ function App() {
                     id: index,
                     year: year,
                     price: price,
-                    date: row.date || "Unknown date"
+                    date: row.date || "Unknown date",
+                    narrative: row.narrative || "No narrative provided",
+                    source: row.source || null
                   };
                 }
                 return null;
@@ -112,7 +136,10 @@ function App() {
                   type="number" 
                   dataKey="price" 
                   name="Price"
+                  tick={<CustomYAxisTick />}
                 />
+                <ZAxis range={[60, 60]} />
+                <Tooltip content={<CustomTooltip />} />
                 <Scatter 
                   data={data} 
                   fill="#8884d8" 
@@ -128,49 +155,10 @@ function App() {
         </div>
       </main>
       <footer className="App-footer">
-        <p>Data compiled manually by Luke Harold. Coding by Claude.ai.</p>
-        <p>Last updated May 5, 2025</p>
+        <p>Data compiled manually by Luke Harold</p>
       </footer>
     </div>
   );
 }
-
-// Add this function to your App.js:
-const CustomYAxisTick = (props) => {
-  const { x, y, payload } = props;
-  return (
-    <g transform={`translate(${x},${y})`}>
-      <text x={0} y={0} dy={4} textAnchor="end" fill="#666">
-        ${payload.value.toLocaleString()}
-      </text>
-    </g>
-  );
-};
-
-// Then update your YAxis component:
-<YAxis 
-  type="number" 
-  dataKey="price" 
-  name="Price"
-  tick={<CustomYAxisTick />}
-/>
-
-// Import Tooltip from recharts
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
-
-// Add the custom tooltip component
-const CustomTooltip = ({ active, payload }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="hover-tooltip">
-        Click for details
-      </div>
-    );
-  }
-  return null;
-};
-
-// Add the Tooltip component to your ScatterChart
-<Tooltip content={<CustomTooltip />} />
 
 export default App;
