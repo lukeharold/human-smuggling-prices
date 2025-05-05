@@ -1,0 +1,189 @@
+.custom-tooltip {
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  max-width: 300px;
+  pointer-events: auto;
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tooltip-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  padding: 0 0 0 8px;
+  margin: 0;
+  line-height: 1;
+}
+
+.tooltip-close-btn:hover {
+  color: #333;
+}
+
+.tooltip-date {
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+
+.tooltip-price {
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+
+.tooltip-narrative {
+  margin-top: 8px;
+}
+
+.tooltip-narrative-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.tooltip-narrative-text {
+  font-size: 0.75rem;
+}
+
+.tooltip-source {
+  margin-top: 8px;
+  border-top: 1px solid #eaeaea;
+  padding-top: 8px;
+}
+
+.tooltip-source-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.tooltip-source-link {
+  font-size: 0.75rem;
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+.tooltip-source-link:hover {
+  color: #2c5282;
+}
+
+.detailed-tooltip {
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  max-width: 300px;
+  z-index: 1000;
+}
+
+.hover-tooltip {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+
+.simple-tooltip {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.tooltip-container {
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  max-width: 300px;
+  z-index: 1000;
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tooltip-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  padding: 0 0 0 8px;
+  margin: 0;
+  line-height: 1;
+}
+
+.tooltip-close-btn:hover {
+  color: #333;
+}
+
+.tooltip-date {
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+  margin-right: 16px;
+}
+
+.tooltip-price {
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+
+.tooltip-narrative {
+  margin-top: 8px;
+}
+
+.tooltip-narrative-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.tooltip-narrative-text {
+  font-size: 0.75rem;
+}
+
+.tooltip-source {
+  margin-top: 8px;
+  border-top: 1px solid #eaeaea;
+  padding-top: 8px;
+}
+
+.tooltip-source-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.tooltip-source-link {
+  font-size: 0.75rem;
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+.tooltip-source-link:hover {
+  color: #2c5282;
+}
+
+// In your BorderSmugglingVisualization.css file, make sure this style is present:
+.visualization-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
